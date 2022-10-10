@@ -110,7 +110,6 @@ class ReactiveDataClassProcessor(private val environment: SymbolProcessorEnviron
             classProperties = primaryConstructorParameters.map { it.name!! }.toList()
         )
         classBuilder.addStateEmittedFlow(
-            className = dataClass.toClassName(),
             classType = dataClass.asStarProjectedType().toClassName(),
         )
         return classBuilder
@@ -307,7 +306,6 @@ private fun TypeSpec.Builder.addStateFlow(
 
 
 private fun TypeSpec.Builder.addStateEmittedFlow(
-    className: ClassName,
     classType: TypeName,
 ) {
     val mutableFlowType = ClassName("kotlinx.coroutines.flow", "MutableStateFlow")
