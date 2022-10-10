@@ -1,16 +1,9 @@
 
 plugins {
     kotlin("jvm")
-    id("com.vanniktech.maven.publish")
+    id("maven-publish")
 }
-
-java {
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
-        }
-    }
-}
+group = "com.github.jortas"
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
